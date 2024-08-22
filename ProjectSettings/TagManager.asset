@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Hook
+  - Fish_1
+  - Fish_5
+  - Fish_10
   layers:
   - Default
   - TransparentFX
