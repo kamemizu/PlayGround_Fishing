@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class Fish_15 : MonoBehaviour
 {
+    private float life = 60;
     //[SerializeField] private Transform L_Wall;
     //[SerializeField] private Transform R_Wall;
     private GameObject L_Wall;
@@ -32,6 +33,11 @@ public class Fish_15 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        life -= Time.deltaTime;
+        if (life < 0)
+        {
+            Destroy(this.gameObject);
+        }
         if (GameManager.gameState == GameManager.State.Finish)
         {
             state = State.Finish;
