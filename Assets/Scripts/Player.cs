@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     {
         if(name == "Player1")
         {
+            Debug.Log("â¡éZÅIÅIÅI");
             if (collision.gameObject.tag == "Fish_1")
             {
                 GameManager.p1Score += 1;
@@ -30,6 +31,14 @@ public class Player : MonoBehaviour
             if (collision.gameObject.tag == "Fish_10")
             {
                 GameManager.p1Score += 10;
+            }
+            if (collision.gameObject.tag == "Fish_15")
+            {
+                GameManager.p1Score += 15;
+            }
+            if (collision.gameObject.tag == "Fish_30")
+            {
+                GameManager.p1Score += 30;
             }
         }
         if (name == "Player2")
@@ -46,6 +55,14 @@ public class Player : MonoBehaviour
             {
                 GameManager.p2Score += 10;
             }
+            if (collision.gameObject.tag == "Fish_15")
+            {
+                GameManager.p2Score += 15;
+            }
+            if (collision.gameObject.tag == "Fish_30")
+            {
+                GameManager.p2Score += 30;
+            }
         }
         if (name == "Player3")
         {
@@ -61,6 +78,14 @@ public class Player : MonoBehaviour
             {
                 GameManager.p3Score += 10;
             }
+            if (collision.gameObject.tag == "Fish_15")
+            {
+                GameManager.p3Score += 15;
+            }
+            if (collision.gameObject.tag == "Fish_30")
+            {
+                GameManager.p3Score += 30;
+            }
         }
         if (name == "Player4")
         {
@@ -75,6 +100,14 @@ public class Player : MonoBehaviour
             if (collision.gameObject.tag == "Fish_10")
             {
                 GameManager.p4Score += 10;
+            }
+            if (collision.gameObject.tag == "Fish_15")
+            {
+                GameManager.p4Score += 15;
+            }
+            if (collision.gameObject.tag == "Fish_30")
+            {
+                GameManager.p4Score += 30;
             }
         }
 

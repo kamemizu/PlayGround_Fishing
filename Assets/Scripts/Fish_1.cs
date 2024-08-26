@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO.Pipes;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Fish : MonoBehaviour
+public class Fish_1 : MonoBehaviour
 {
     //[SerializeField] private Transform L_Wall;
     //[SerializeField] private Transform R_Wall;
     private GameObject L_Wall;
     private GameObject R_Wall;
-    private float speed = 5.0f;
+    private float speed = 1.0f;
     private float upSpeed;
     private bool goRight;
 
@@ -33,7 +32,7 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.gameState == GameManager.State.Finish)
+        if (GameManager.gameState == GameManager.State.Finish)
         {
             state = State.Finish;
         }
@@ -53,6 +52,15 @@ public class Fish : MonoBehaviour
 
     private void idolMove()
     {
+        if(speed >= 0)
+        {
+            speed -= Time.deltaTime * 2;
+        }
+        else
+        {
+            speed = 5.0f;
+        }
+
         if (goRight)
         {
             if (transform.position.x < R_Wall.transform.position.x)
@@ -81,8 +89,17 @@ public class Fish : MonoBehaviour
 
     private void caughtMove()
     {
-        transform.position += transform.up * upSpeed * Time.deltaTime;
-        if(transform.position.y > 8)
+        transform.position += new Vector3(0, upSpeed * Time.deltaTime, 0);
+        if (goRight)
+        {
+            transform.localEulerAngles = new Vector3(0, 0, 90);
+        }
+        else
+        {
+            transform.localEulerAngles = new Vector3(0, 0, 270);
+        }
+
+        if (transform.position.y > 8)
         {
             Destroy(this.gameObject);
         }

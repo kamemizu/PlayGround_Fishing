@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO.Pipes;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Fish : MonoBehaviour
+public class Fish_15 : MonoBehaviour
 {
     //[SerializeField] private Transform L_Wall;
     //[SerializeField] private Transform R_Wall;
@@ -33,7 +32,7 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.gameState == GameManager.State.Finish)
+        if (GameManager.gameState == GameManager.State.Finish)
         {
             state = State.Finish;
         }
@@ -63,7 +62,7 @@ public class Fish : MonoBehaviour
             {
                 goRight = false;
             }
-            transform.localScale = new Vector2(-1, 1);
+            transform.localScale = new Vector2(-2, 2);
         }
         else
         {
@@ -75,14 +74,23 @@ public class Fish : MonoBehaviour
             {
                 goRight = true;
             }
-            transform.localScale = new Vector2(1, 1);
+            transform.localScale = new Vector2(2, 2);
         }
     }
 
     private void caughtMove()
     {
-        transform.position += transform.up * upSpeed * Time.deltaTime;
-        if(transform.position.y > 8)
+        transform.position += new Vector3(0, upSpeed * Time.deltaTime, 0);
+        if (goRight)
+        {
+            transform.localEulerAngles = new Vector3(0, 0, 90);
+        }
+        else
+        {
+            transform.localEulerAngles = new Vector3(0, 0, 270);
+        }
+
+        if (transform.position.y > 8)
         {
             Destroy(this.gameObject);
         }
@@ -101,3 +109,4 @@ public class Fish : MonoBehaviour
         }
     }
 }
+

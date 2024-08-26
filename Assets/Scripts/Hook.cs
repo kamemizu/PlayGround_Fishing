@@ -6,7 +6,7 @@ public class Hook : MonoBehaviour
 {
     [SerializeField] private Transform fallLimit;
     public float hookDownSpeed = 2.0f;
-    public float hookUpSpeed = 10.0f;
+    public float hookUpSpeed = 1.0f;
     private Vector2 firstPos;
     private Vector2 Pos;
     public bool up;
@@ -15,6 +15,7 @@ public class Hook : MonoBehaviour
     {
         firstPos = transform.position;
         up = false;
+        hookUpSpeed = 5.0f;
     }
 
     // Update is called once per frame
