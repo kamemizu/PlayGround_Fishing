@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Hook : MonoBehaviour
 {
+    [SerializeField] private GameObject upSE;
+    [SerializeField] private GameObject inSE;
+    [SerializeField] private GameObject outSE;
+
+
     [SerializeField] private Transform fallLimit;
     public float hookDownSpeed = 2.0f;
     public float hookUpSpeed = 1.0f;
@@ -16,6 +21,7 @@ public class Hook : MonoBehaviour
         firstPos = transform.position;
         up = false;
         hookUpSpeed = 5.0f;
+        hookDownSpeed = 5.0f;
     }
 
     // Update is called once per frame
@@ -24,21 +30,39 @@ public class Hook : MonoBehaviour
         ctrl();
         if (!up)
         {
-            if(transform.position.y > fallLimit.position.y)
+            upSE.SetActive(false);
+            if (transform.position.y > fallLimit.position.y)
             {
                 transform.position -= transform.up * hookDownSpeed * Time.deltaTime;
 
             }
+            if(transform.position.y < 2.5f)
+            {
+                inSE.SetActive(true);
+            }
+            if(transform.position.y < 2)
+            {
+                inSE.SetActive(false);
+            }
         }
         else
         {
-            if(transform.position.y < firstPos.y)
+            upSE.SetActive(true);
+            if (transform.position.y < firstPos.y)
             {
                 transform.position += transform.up * hookUpSpeed * Time.deltaTime;
             }
             else
             {
                 up = false;
+            }
+            if (transform.position.y > 2)
+            {
+                outSE.SetActive(true);
+            }
+            if(transform.position.y > 4)
+            {
+                outSE.SetActive(false);
             }
         }
         

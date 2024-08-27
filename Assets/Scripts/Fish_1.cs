@@ -120,6 +120,7 @@ public class Fish_1 : MonoBehaviour
             {
                 state = State.Caught;
                 upSpeed = collision.gameObject.GetComponent<Hook>().hookUpSpeed;
+                transform.position = new Vector2(collision.transform.position.x, transform.position.y);
             }
         }
     }

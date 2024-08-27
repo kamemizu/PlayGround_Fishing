@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject p2win;
     [SerializeField] private GameObject p3win;
     [SerializeField] private GameObject p4win;
+    [SerializeField] private GameObject goResult;
     private float finishTimer = 0.0f;
     public enum State
     {
@@ -118,6 +119,7 @@ public class GameManager : MonoBehaviour
                 if(finishTimer > 4)
                 {
                     result.SetActive(true);
+                    goResult.SetActive(true);
                 }
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -127,6 +129,7 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case State.Next:
+                goResult.SetActive(false);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     SceneManager.LoadScene("Title");
